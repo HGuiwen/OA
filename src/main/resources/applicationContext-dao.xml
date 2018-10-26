@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- 因为每个dao对象都需要连接工厂对象操作数据库
+	    所以可以把注入sessionFactory的配置做成一个抽象bean
+	    再给所有的dao的bean继承即可，
+	 -->
+ 
+ 	<bean id="userDao" class="com.demo.lms.identity.dao.impl.UserDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+	<bean id="deptDao" class="com.demo.lms.hrm.dao.impl.DeptDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+    <bean id="jobDao" class="com.demo.lms.hrm.dao.impl.JobDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+    <bean id="roleDao" class="com.demo.lms.identity.dao.impl.RoleDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+	<bean id="moduleDao" class="com.demo.lms.identity.dao.impl.ModuleDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+	<bean id="popedomDao" class="com.demo.lms.identity.dao.impl.PopedomDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+	<bean id="noticeTypeDao" class="com.demo.lms.notice.dao.impl.NoticeTypeDaoImpl" p:sessionFactory-ref="sessionFactory"></bean>
+</beans>
+
+
+
